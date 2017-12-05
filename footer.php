@@ -10,7 +10,7 @@
 */
 ?>
 </div><!-- #content -->
-<footer id="colophon" class="site-footer">
+<footer id="colophon" class="site-footer wow fadeInUpBig" data-wow-duration="0.8s" data-wow-delay="0s">
 	<div class="site-info">
 		<div class="container">
 			<div class="footer-site-branding">

@@ -148,43 +148,7 @@ $wp_customize->add_control('copyright_line',array(
 'section' => 'copyright_line',
 'type' => 'textarea',
 ));
-// Footer color
-$wp_customize->add_section('footer_color',array(
-'title' => 'Footer color',
-'panel' => 'footer_area',
-'priority' => 1,
-));
-//footer background color
-$wp_customize->add_setting('footer_background_color',
- array('default' => '#313131',
- 	   'type'=>'option'
-));
 
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'footer_background_color',
-array(
-'label'      => 'Footer background color',
-'section'    => 'footer_color',
-'settings'   => 'footer_background_color'
-))
-);
-//footer header text color
-$wp_customize->add_setting('footer_text_color', array('default' => '#ffffff', 'type'=>'option'));
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'footer_text_color',
-array(
-'label'      => 'Footer heading font color',
-'section'    => 'footer_color',
-'settings'   => 'footer_text_color',
-))
-);
-//footer sub text color
-$wp_customize->add_setting('footer_subtext_color', array('default' => '#707671', 'type'=>'option'));
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'footer_subtext_color',
-array(
-'label'      => 'Footer sub-text color',
-'section'    => 'footer_color',
-'settings'   => 'footer_subtext_color',
-))
-);
 //Page manager
 $wp_customize->add_panel('page_manager',array(
 'title' => __('Page manager'),
@@ -272,6 +236,78 @@ array(
 'settings'   => 'mid_page_background',
 ))
 );
+
+//colors
+$wp_customize->add_panel('colors_pnl',array(
+'title' => __('Colors homemade'),
+'description' => "<p>You can modify your colors here</p>",
+'priority' => 1,
+));
+
+$wp_customize->add_section( 'colors_area' , array(
+'title'      => __( 'Colors', 'homemade' ),
+'panel' => 'colors_pnl',
+'priority'   => 30,
+));
+//button-1 background
+$wp_customize->add_setting('btn_1', array('default' => '#f7941d', 'type'=>'option'));
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'btn_1',
+array(
+'label'      => 'Button-1 background',
+'section'    => 'colors_area',
+'settings'   => 'btn_1',
+))
+);
+//text_color-1 background
+$wp_customize->add_setting('text_color_1', array('default' => '#ffffff', 'type'=>'option'));
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'text_color_1',
+array(
+'label'      => 'Text color-1',
+'section'    => 'colors_area',
+'settings'   => 'text_color_1',
+))
+);
+//text_color-2 background
+$wp_customize->add_setting('text_color_2', array('default' => '#818181', 'type'=>'option'));
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'text_color_2',
+array(
+'label'      => 'Text color-2',
+'section'    => 'colors_area',
+'settings'   => 'text_color_2',
+))
+);
+//footer background color
+$wp_customize->add_setting('footer_backc', array('default' => '#313131', 'type'=>'option'));
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'footer_backc',
+array(
+'label'      => 'Footer background',
+'section'    => 'colors_area',
+'settings'   => 'footer_backc',
+))
+);
+
+
+//static top background image selector
+$wp_customize->add_section( 'head_back_static_image' , array(
+'title'      => __( 'Background static header image', 'homemade' ),
+'panel' => 'header_1',
+'priority'   => 30,
+));
+$wp_customize->add_setting('header_static_image_selector',array(
+		'default'		=> get_stylesheet_directory_uri() . '/img/Slider.png',
+		'sanitize_callback'	=> 'esc_url_raw',
+		'transport'		=> 'postMessage'));
+
+$wp_customize->add_control(
+	new WP_Customize_Image_Control($wp_customize,'header_static_image_selector',array(
+		'settings'		=> 'header_static_image_selector',
+		'section'		=> 'head_back_static_image',
+		'label'			=> __( 'Home Top Background Image', 'homemade' ),
+		'description'	=> __( 'Select the image to be used for Home Top Background.', 'homemade' )
+		)
+	)
+);
+
 
 
 
