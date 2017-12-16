@@ -74,4 +74,8 @@ $(".slider_contents").load(function(){
   }
 );
 wow.init();
+    $('.menu-toggle').click(function(){
+        $('#nav-icon1').toggleClass('open');
+        $('.menu-primary-menu-container').slideDown(2000).toggleClass('visible');
+    });
 });

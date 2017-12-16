@@ -26,10 +26,10 @@
 			echo ".main-navigation a,.mid-page-content{color: $color2;}";
 			//Nav_background_color
 			$color3=get_option('nav_background_color');
-			echo ".main-navigation{background-color: $color3;} ";
+			echo ".main-navigation,.menu-toggle{background-color: $color3;} ";
 			//middle-page-background-color
 			$color7=get_option('mid_page_background');
-			echo ".middle-page{background-color: $color7;} ";
+			echo ".mid-page-content{background-color: $color7;} ";
 			//Footer_subtext_color
 			$mid_back = get_option('mid_page_background');
 			echo".heading{background-color:$mid_back;}";
@@ -51,12 +51,9 @@
 		</head>
 		<body <?php body_class(); ?>>
 			
-			<div id="page" class="site">
-				
-				<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'homemade' ); ?></a>
-				
+			<div id="page" class="site">	
+				<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'homemade' ); ?></a>	
 				<header id="masthead" class="site-header">
-			
 					<div class="main-container">
 					<?php
 					if ( !is_front_page()) {
@@ -84,10 +81,15 @@
 												the_post_thumbnail();?>
 												<div class="slider_contents" >
 												<div class="wow fadeInUpBig" data-wow-duration="0.7s" data-wow-delay="0s">
+												<div class="title title-5">
 												<?php
-												the_title();
+												the_title();?>
+												</div><!--title-5-->
+												<div class="content content-5">
+												<?php
 												the_content();
 											endif; ?>
+										</div><!--content-5-->
 												</div>
 												</div><!--slider-contents-->
 										</div><!-- item -->
@@ -110,15 +112,25 @@
  <?php
 						 endif;?>
 							</div><!--slider-->
-					<div class="container top-head">
+				<div class="clearfix"></div><!--clearfix-->
+				<!-- <div class="container"> -->
+					<div class="top-head container">
 						<div class="site-branding" data-wow-duration="0.8s" data-wow-delay="0s">
 							<?php the_custom_logo(); ?>
 						</div><!-- .site-branding -->
 						<div class="call-us">
 							<i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;<?php echo get_option('call_us'); ?>
-						</div><!--call-us-->								
-						<nav id="site-navigation" class="main-navigation">
-							<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'homemade' ); ?></button>
+						</div><!--call-us-->									
+					
+							<div class="clearfix"></div><!--clearfix-->
+					<nav id="site-navigation" class="main-navigation">
+		<!-- 					<div class="mob"><?php echo get_the_title();?></div> -->
+							<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><div id="nav-icon1">
+								  <span></span>
+								  <span></span>
+								  <span></span>
+							</div></button>
+							<div class="clearfix"></div><!--clearfix-->
 								<?php
 								wp_nav_menu( array(
 								'theme_location' => 'menu-1',
@@ -136,9 +148,12 @@
 							endforeach;
 									?>
 							</div><!-- social-profile -->
-						</nav><!-- #site-navigation -->
-					</div><!-- container -->
-					<div class="clearfix"></div>
+
+					</nav><!-- #site-navigation -->
+					</div><!--top-header-->
+
+				<!-- </div>container -->
+					<div class="clearfix"></div><!--clearfix-->
 					</div><!--main-container-->	
 				</header><!-- #masthead -->		
 				<div id="content" class="site-content">
